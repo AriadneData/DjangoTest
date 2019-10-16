@@ -59,9 +59,10 @@ body {font-size:16px;}
   
   <!-- Photo grid (modal) -->
   <div class="w3-row-padding">
-    <div class="flourish-embed" data-src="visualisation/650033" style="width:50%;height: 50%"></div>
-    <p>How the top of the table changed week by week - Click on the Show Me to replay it</p>
+
     <div class="w3-half">
+      <div class="flourish-embed" data-src="visualisation/650033" style="width:100%;height:40%"></div>
+      <p>How the top of the table changed week by week - Click on the Show Me to replay it</p>
       {% load static %}
       <img src="{%static 'images/TotalScores.png' %}" style="width:100%" onclick="onClick(this)" alt="Correct Score Count">
       <p>The above shows the number of correct scores since the start - this is your 5 points</p>
