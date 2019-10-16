@@ -17,13 +17,13 @@ body {font-size:16px;}
 <body>
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;color=#1B4EC4" id="mySidebar"><br>
+<nav class="w3-sidebar w3-blue w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;color=#1B4EC4" id="mySidebar"><br>
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
   <div class="w3-container">
-    <h3 class="w3-padding-64"><b>Precarious<br>Predictors<br>Super Six</b></h3>
+    <h3 class="w3-padding-64"><a href="https://super6.skysports.com/league" title="Super6" target="_blank"><b>Precarious<br>Predictors<br>Super Six</b></a></h3>
   </div>
   <div class="w3-bar-block">
-    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Analysis</a> 
     
     <a href="#predictions" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Bot Predictions</a> 
 
@@ -37,11 +37,9 @@ body {font-size:16px;}
 </nav>
 
 <!-- Top menu on small screens -->
-<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
-  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
-  <span>Super6 Precarious Predictors</span>
-  <img src="images/Super6.png" style="width:100%"" alt="Super 6 logo">
-     
+<header class="w3-container w3-top w3-hide-large w3-blue w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-blue w3-margin-right" onclick="w3_open()">☰</a>
+  <span>Super6 Precarious Predictors</span> 
 </header>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -51,20 +49,26 @@ body {font-size:16px;}
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 
   <!-- Header -->
-  <div class="w3-container" style="margin-top:80px" id="showcase">
-    <h1 class="w3-jumbo"><b>Super 6 </b></h1>
-    <h1 class="w3-xxxlarge w3-text-red"><b>Analysis.</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
+  <div class="w3-container" style="margin-top:20px" id="showcase">
+    {% load static %}
+    <img src="{%static 'images/Super6Small.png' %}" style="width:100%; height: 5%" onclick="onClick(this)" alt="Logo">
+    <h1 class="w3-xxxlarge w3-text-blue"><b>Analysis.</b></h1>
+    <hr style="width:50px;border:5px solid blue" class="w3-round">
     <p>How are you doing in the Super 6 - Fancy your chances against the SuperBots?</p>
-    <div class="flourish-embed" data-src="visualisation/650033"></div>
   </div>
   
   <!-- Photo grid (modal) -->
   <div class="w3-row-padding">
+    <div class="flourish-embed" data-src="visualisation/650033" style="width:50%;height: 50%"></div>
+    <p>How the top of the table changed week by week - Click on the Show Me to replay it</p>
     <div class="w3-half">
-      <img src="images/TotalScores.png" style="width:100%" onclick="onClick(this)" alt="Correct Score Count">
-      <img src="images/TotalResults.png" style="width:100%" onclick="onClick(this)" alt="Correct Results Count">
-      <img src="images/progress.png" style="width:100%" onclick="onClick(this)" alt="progress">
+      {% load static %}
+      <img src="{%static 'images/TotalScores.png' %}" style="width:100%" onclick="onClick(this)" alt="Correct Score Count">
+      <p>The above shows the number of correct scores since the start - this is your 5 points</p>
+      <img src="{%static 'images/TotalResults.png' %}" style="width:100%" onclick="onClick(this)" alt="Correct Results Count">
+      <p>The above shows the number of correct results since the start - this is your 2 points</p>
+      <img src="{%static 'images/progress.png' %}" style="width:100%" onclick="onClick(this)" alt="progress">
+      <p>This is showing how your points have increased of the weeks</p>
     </div>
 
 
@@ -81,9 +85,9 @@ body {font-size:16px;}
 
   <!-- Predictions -->
   <div class="w3-container" id="predictions" style="margin-top:75px">
-    <h1 class="w3-xxxlarge w3-text-red"><b>Predictions.</b></h1>
-    <hr style="width:50px;border:5px solid red" class="w3-round">
-    <p> Week 15 Predictions </p>
+    <h1 class="w3-xxxlarge w3-text-blue"><b>Predictions.</b></h1>
+    <hr style="width:50px;border:5px solid blue" class="w3-round">
+    <h2> Week 15 Predictions </h2>
   </div>
 
   <style type="text/css">
@@ -93,8 +97,15 @@ body {font-size:16px;}
 .tg .tg-0lax{text-align:center;vertical-align:top}
 .tg .tg-hmp3{background-color:#D2E4FC;text-align:center;vertical-align:top}
 </style>
-<h2> SuperBot v1 </h2>
 
+<h3> The Superbots are models that try to predict the scores.</h3>
+<p>Notice from above the Superbots do ok getting the results but this week
+  was the first week SuperBotv1 got a correct result</p>
+<p>Superbot v2 only started in week 14 and as I couldn't get history we'll 
+see how well it predicts in the coming weeks</p>
+
+<h2> SuperBot v1 </h2>
+<p>This is really simple probability of goals scored in Super6</p>
 <table class="tg">
   <tr>
     <th class="tg-0lax">Home Team</th>
@@ -139,16 +150,20 @@ body {font-size:16px;}
     <td class="tg-hmp3">Southampton</td>
   </tr>
     <tr>
-    <td class="tg-hmp3">Bournemouth</td>
-    <td class="tg-hmp3">1</td>
-    <td class="tg-hmp3">v</td>
-    <td class="tg-hmp3">2</td>
-    <td class="tg-hmp3">Norwich</td>
+    <td class="tg-0lax">Bournemouth</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">v</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">Norwich</td>
   </tr>
 </table>
 
 
 <h2> SuperBot v2 </h2>
+<p>This is tries to work out the attack and defense strength of the teams.
+  <br>
+  Definitely a work in progress!!
+</p>
 
 <table class="tg">
   <tr>
@@ -194,11 +209,11 @@ body {font-size:16px;}
     <td class="tg-hmp3">Southampton</td>
   </tr>
     <tr>
-    <td class="tg-hmp3">Bournemouth</td>
-    <td class="tg-hmp3">2</td>
-    <td class="tg-hmp3">v</td>
-    <td class="tg-hmp3">0</td>
-    <td class="tg-hmp3">Norwich</td>
+    <td class="tg-0lax">Bournemouth</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">v</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">Norwich</td>
   </tr>
 </table>
 
@@ -317,8 +332,7 @@ End page content
 </div> -->
 
 <!-- W3.CSS Container -->
-<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
-
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Powered by <a href="https://github.com/AriadneData/DjangoTest" title="Amanda" target="_blank" class="w3-hover-opacity">Amanda</a></p></div>
 <script>
 // Script to open and close sidebar
 function w3_open() {
